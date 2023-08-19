@@ -1,5 +1,6 @@
 //Pulman,Mass,Picoult
 //isbn: 9780143126560, 9781526602305
+//Secret,Кактус
 
 resulResponseAutor = [];
 
@@ -10,6 +11,7 @@ let bookName = document.querySelector("#bookName").value;
 let isbnBuuton = document.querySelector("#isbnButton");
 let authorButton = document.querySelector("#authorButton");
 let bookNameButton = document.querySelector("#bookNameButton");
+let moreBooks = document.querySelector("#more");
 
 function clearAllInputs() {
   isbn = "";
