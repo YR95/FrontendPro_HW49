@@ -1,4 +1,5 @@
 //Pulman,Mass,Picoult
+//isbn: 9780143126560, 9781526602305
 
 resulResponseAutor = [];
 
@@ -18,6 +19,7 @@ function clearAllInputs() {
 
 authorButton.addEventListener("click", (ev) => {
   resulResponseAutor = [];
+  document.querySelector("#result").innerText = "";
   let author = document.querySelector("#author").value;
   const query = `inauthor:"${encodeURIComponent(author)}"`;
   const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${API}`;
@@ -26,26 +28,16 @@ authorButton.addEventListener("click", (ev) => {
   .then(response => response.json())
   .then(data => {
     if (data.items) {
-      data.items.forEach(item => {
-        let obj = {};
-        obj.title = item.volumeInfo.title;
-        obj.authorName = item.volumeInfo.authors;
-        obj.image = item.volumeInfo.imageLinks!==undefined
-            ? item.volumeInfo.imageLinks.thumbnail : "unknown.png";
-        obj.publishedData = item.volumeInfo.publishedDate;
-        obj.pageCount = item.volumeInfo.pageCount;
-        resulResponseAutor.push(obj);
-        console.log(obj);
-      });
-      renderElements(resulResponseAutor);
+      generalBodyRequest(data);
 
     } else {
-      console.log(`No books found by ${author}`);
+      alert(`No books found by author:  ${author}`);
     }
   })
   .catch(error => {
     console.error('Error fetching data:', error);
   });
+  document.querySelector("#author").value = "";
 
 });
 
@@ -128,10 +120,92 @@ function renderElements(arrays) {
     divImage.append(labeImage, image);
     divImage.classList = "answeBlock";
 
-    divPerBlock.append(divTitle, divAuth, divDate, divPage, divImage);
+//ISBM
+    let divISBN = document.createElement("div");
+    divISBN.id = `divISBN${value}`;
+    let labeISBN = document.createElement("p");
+    labeISBN.id = `isbn${value}`;
+    labeISBN.innerText = "ISBN: ";
+    labeISBN.classList = "labelValue";
+
+    let isbn = document.createElement("p");
+    isbn.id = `isbnPage${value}`;
+    isbn.innerHTML = value.isbn.map(
+        x => `Type: ${x.type} ID: ${x.identifier} <br>`);
+    isbn.classList = "answeBlock";
+
+    divISBN.append(labeISBN, isbn);
+    divISBN.classList = "answeBlock";
+
+    divPerBlock.append(divTitle, divAuth, divDate, divPage, divImage, divISBN);
 
     document.querySelector("#result").append(divPerBlock);
   });
 
 }
 
+isbnBuuton.addEventListener("click", (ev) => {
+  resulResponseAutor = [];
+  document.querySelector("#result").innerText = "";
+
+  let isbn = document.querySelector("#isbn").value;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${API}`;
+
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    if (data.items) {
+      generalBodyRequest(data);
+    } else {
+      alert(`No books found by isbn: ${isbn}`);
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  document.querySelector("#isbn").value = "";
+});
+
+function generalBodyRequest(data) {
+
+  data.items.forEach(item => {
+    let obj = {};
+    obj.title = item.volumeInfo.title;
+    obj.authorName = item.volumeInfo.authors;
+    obj.image = item.volumeInfo.imageLinks !== undefined
+        ? item.volumeInfo.imageLinks.thumbnail : "unknown.png";
+    obj.publishedData = item.volumeInfo.publishedDate;
+    obj.pageCount = item.volumeInfo.pageCount;
+    obj.isbn = item.volumeInfo.industryIdentifiers;
+
+    resulResponseAutor.push(obj);
+    console.log(obj);
+  });
+  renderElements(resulResponseAutor);
+
+}
+
+bookNameButton.addEventListener("click", (ev) => {
+  resulResponseAutor = [];
+  document.querySelector("#result").innerText = "";
+
+  let title = document.querySelector("#bookName").value;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${title}&key=${API}`;
+
+
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    if (data.items) {
+      generalBodyRequest(data);
+    } else {
+      alert(`No books found by title: ${title}`);
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+  document.querySelector("#bookName").value = "";
+});
