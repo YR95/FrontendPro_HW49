@@ -4,31 +4,43 @@
   <script src="./script.js" defer></script>
   <title>HW49</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@1,500&display=swap"
+      rel="stylesheet">
 </head>
 <body>
 <header class="header">
   <H1>Find info about book on Google Api platfrorm</H1>
+  <img src="giphy.gif">
 </header>
-<div class="mainBlock">
+<div class="infoblock">
+  <div class="mainBlock">
+    <div class="elementOfBlock">
+      <label for="author">Input author</label>
+      <input type="text" placeholder="Author" id="author">
+      <input type="button" value="Find" id="authorButton">
+    </div>
+    <div class="elementOfBlock">
+      <label for="bookName">Input title of book</label>
+      <input type="text" placeholder="'Four winds'" id="bookName">
+      <input type="button" value="Find" id="bookNameButton">
 
-  <div class="elementOfBlock">
-    <label for="author">Input author</label>
-    <input type="text" placeholder="Author" id="author">
-    <input type="button" value="Find" id="authorButton">
+    </div>
+    <div class="elementOfBlock">
+      <label for="isbn">Input isbn</label>
+      <input type="text" placeholder="0735619670" id="isbn">
+      <input type="button" value="Find" id="isbnButton">
+
+    </div>
   </div>
-  <div class="elementOfBlock">
-    <label for="bookName">Input title of book</label>
-    <input type="text" placeholder="'Four winds'" id="bookName">
-    <input type="button" value="Find" id="bookNameButton">
+
+  <div id="result" class="result">
 
   </div>
 
-  <div class="elementOfBlock">
-    <label for="isbn">Input isbn</label>
-    <input type="text" placeholder="0735619670" id="isbn">
-    <input type="button" value="Find" id="isbnButton">
 
-  </div>
 </div>
 </body>
 </html>

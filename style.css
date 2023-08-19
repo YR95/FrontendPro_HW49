@@ -1,15 +1,27 @@
-.header {
-  font-size: 30px;
-  font-weight: 700;
-  text-align: center;
+body {
+  font-family: 'Victor Mono', monospace;
+
+}
+
+header {
+  font-size: 23px;
+  font-weight: 400;
   color: cadetblue;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+h1 {
+  padding-left: 15%;
 }
 
 .mainBlock {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   background: aliceblue;
+  border-radius: 10px;
 }
 
 .elementOfBlock {
@@ -20,16 +32,90 @@
   font-size: 30px;
   text-align: center;
   width: 280px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: 15px;
+  padding: 15px;
+
 }
 
 div > * {
   padding: 10px;
   margin: 10px;
+  font-size: 25px;
 }
 
 input[type=button] {
   border-radius: 20px;
-  border: 2px solid plum;
+  border: 2px solid aliceblue;
+  color: cadetblue;
   font-size: 25px;
   background: white;
+  box-shadow: rgba(224, 194, 232, 0.65) 0px -23px 25px 0px inset, rgba(197, 229, 245, 0.91) 0px -36px 30px 0px inset, rgba(195, 231, 213, 0.4) 0px -79px 40px 0px inset, rgba(175, 224, 220, 0.42) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.infoblock {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #e0f5ff;
+
+}
+
+input[type=text] {
+  border-radius: 15px;
+  border-color: white;
+  color: purple;
+}
+
+label {
+  color: rebeccapurple;
+  text-align: center;
+
+}
+
+img {
+  width: 230px;
+}
+
+input[type=text]:focus {
+  outline: none;
+  border-color: #ff97d3;
+  box-shadow: inset 0 1px 4px #ffaadb, 0 0 20px 2px #ff93d1;
+}
+
+.answeBlock {
+  background: white;
+  border: solid 2px;
+  border-color: #ff93d1;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: rebeccapurple;
+}
+
+.result {
+  background: cadetblue;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.divPerBlock {
+  background: #e0f5ff;
+  border: solid 2px;
+  border-color: #ff93d1;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.labelValue {
+  font-size: 30px;
+  font-weight: 500;
+  color: cadetblue;
 }
