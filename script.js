@@ -30,7 +30,8 @@ authorButton.addEventListener("click", (ev) => {
         let obj = {};
         obj.title = item.volumeInfo.title;
         obj.authorName = item.volumeInfo.authors;
-        obj.image = item.volumeInfo.imageLinks.thumbnail;
+        obj.image = item.volumeInfo.imageLinks!==undefined
+            ? item.volumeInfo.imageLinks.thumbnail : "unknown.png";
         obj.publishedData = item.volumeInfo.publishedDate;
         obj.pageCount = item.volumeInfo.pageCount;
         resulResponseAutor.push(obj);
