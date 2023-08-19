@@ -1,0 +1,35 @@
+.header {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  color: cadetblue;
+}
+
+.mainBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: aliceblue;
+}
+
+.elementOfBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: #e0f5ff;
+  font-size: 30px;
+  text-align: center;
+  width: 280px;
+}
+
+div > * {
+  padding: 10px;
+  margin: 10px;
+}
+
+input[type=button] {
+  border-radius: 20px;
+  border: 2px solid plum;
+  font-size: 25px;
+  background: white;
+}
